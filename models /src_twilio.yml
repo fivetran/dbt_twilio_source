@@ -16,7 +16,7 @@ sources:
     tables:
       - name: account_history
         identifier: "{{ var('twilio_account_history_identifier', 'account_history' )}}"
-        description:
+        description: Each record represents a information about each of your accounts.
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -44,7 +44,7 @@ sources:
                 
       - name: address
         identifier: "{{ var('twilio_address_identifier', 'address' )}}"
-        description:
+        description: Each record represents an Address instance that represents your or your customer’s physical location within a country
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -210,7 +210,7 @@ sources:
         
       - name: incoming_phone_number
         identifier: "{{ var('twilio_incoming_phone_number_identifier', 'incoming_phone_number' )}}"
-        description: Each record represents a phone number that is capable of receiving incoming voice, SMS, or MMS messages.
+        description: Each record represents a Twilio phone number provisioned from Twilio, ported or hosted to Twili
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record.  
@@ -347,7 +347,7 @@ sources:
         
       - name: messaging_service
         identifier: "{{ var('twilio_messaging_service_identifier', 'messaging_service' )}}"
-        description:
+        description: Each record represents information about each messaging service. You can think of messaging services as a higher-level “bundling” of messaging functionality around a common set of senders, features, and configuration
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -438,7 +438,7 @@ sources:
         
       - name: outgoing_caller_id
         identifier: "{{ var('twilio_outgoing_caller_id_identifier', 'outgoing_caller_id' )}}"
-        description:
+        description: Each record represents information on a single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 

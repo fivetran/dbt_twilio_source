@@ -30,7 +30,7 @@ final as (
         emergency_address_id,
         emergency_status,
         friendly_name,
-        id as incoming_phone_number,
+        id as incoming_phone_number_id,
         origin,
         phone_number,
         trunk_id,

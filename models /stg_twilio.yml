@@ -2,20 +2,24 @@ version: 2
 
 models:
   - name: stg_twilio__account_history
-    description:
+    description: Table with information about each of your accounts.
     tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - account_id
+            - updated_at
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: account_id
+            description: The unique identifier for the account history record.
 
           - name: created_at
             description: The date and time when the account history record was created.
 
           - name: friendly_name
             description: A user-friendly name or label associated with the account history event.
-
-          - name: account_id
-            description: The unique identifier for the account history record.
 
           - name: owner_account_id
             description: The unique id that represents the parent of this account. The OwnerAccountSid of a parent account is it's own sid.
@@ -31,11 +35,18 @@ models:
 
 
   - name: stg_twilio__address
-    description:
+    description: A table containing records about your or your customer’s physical location within a country
     tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: address_id
+            description: >
+              The unique identifier for the address record.
+            tests:
+              - unique
+              - not_null
             
           - name: account_id
             description: >
@@ -60,10 +71,6 @@ models:
           - name: friendly_name
             description: >
               A user-friendly name or label associated with the address.
-
-          - name: address_id
-            description: >
-              The unique identifier for the address record.
 
           - name: iso_country
             description: >
@@ -95,11 +102,18 @@ models:
 
 
   - name: stg_twilio__call
-    description:
+    description: A table with information about each phone call that occurred or is scheduled to occur.
     tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: call_id
+            description: >
+              The unique identifier for the Call resource.
+            tests:
+              - unique
+              - not_null
             
           - name: account_id
             description: >
@@ -149,10 +163,6 @@ models:
             description: >
               The unique identifier for the grouping of related Calls.
       
-          - name: call_id
-            description: >
-              The unique identifier for the Call resource.
-      
           - name: outgoing_caller_id
             description: >
               The unique identifier for the Outgoing Caller ID resource associated with the Call.
@@ -199,11 +209,18 @@ models:
 
 
   - name: stg_twilio__incoming_phone_number
-    description:
+    description: A table with information about each Twilio phone number provisioned from Twilio, ported or hosted to Twili
     tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: incoming_phone_number_id
+            description: >
+              The unique identifier for this phone number resource.
+            tests:
+              - unique
+              - not_null
             
           - name: account_id
             description: >
@@ -241,10 +258,6 @@ models:
             description: >
               A human-readable name associated with the phone number.
 
-          - name: incoming_phone_number
-            description: >
-              The unique identifier for this phone number resource.
-
           - name: origin
             description: >
               The origination type of the phone number.
@@ -271,11 +284,19 @@ models:
 
 
   - name: stg_twilio__message
-    description:
+    description: A table with information about each individual outbound or inbound message.
     tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - account_id
+            - message_id
+            - message_service_id
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: message_id
+            description: The unique identifier for the message.
             
           - name: account_id
             description: The unique identifier of the Account that sent or received the message.
@@ -300,9 +321,6 @@ models:
 
           - name: message_from
             description: The phone number or sender ID that sent the message.
-
-          - name: message_id
-            description: The unique identifier for the message.
 
           - name: messaging_service_id
             description: The unique identifier of the messaging service associated with the message.
@@ -330,11 +348,19 @@ models:
 
 
   - name: stg_twilio__messaging_service
-    description:
-    tests:
+    description: A table with information about each messaging service. You can think of messaging services as a higher-level “bundling” of messaging functionality around a common set of senders, features, and configuration
+    tests: 
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - account_id
+            - messaging_service_id
     columns:
           - name: _fivetran_deleted
             description: Whether the record has been deleted
+
+          - name: messaging_service_id
+            description: >
+              The unique identifier of the messaging service.
 
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -366,10 +392,6 @@ models:
           - name: friendly_name
             description: >
               A human-readable descriptive name for the messaging service.
-
-          - name: messaging_service_id
-            description: >
-              The unique identifier of the messaging service.
 
           - name: inbound_method
             description: >
@@ -425,20 +447,23 @@ models:
 
 
   - name: stg_twilio__outgoing_caller_id
-    description:
+    description: A table with information on each single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
     tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
+
+          - name: outgoing_caller_id
+            description: The unique string that identifies this resource.
+            tests:
+              - unique
+              - not_null
             
           - name: created_at
             description: 	The date that this resource was created, given in RFC 2822 format.
 
           - name: friendly_name
             description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
-
-          - name: outgoing_caller_id
-            description: The unique string that identifies this resource.
 
           - name: phone_number
             description: The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
@@ -448,8 +473,14 @@ models:
 
 
   - name: stg_twilio__usage_record
-    description:
+    description: A table with information about resource consumption in Twilio.
     tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - category
+            - start_date
+            - end_date
+            - account_id
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
