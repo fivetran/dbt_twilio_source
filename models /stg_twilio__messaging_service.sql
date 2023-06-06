@@ -29,7 +29,7 @@ final as (
         fallback_to_long_code,
         fallback_url,
         friendly_name,
-        id,
+        id as messaging_service_id,
         inbound_method,
         inbound_request_url,
         mms_converter,

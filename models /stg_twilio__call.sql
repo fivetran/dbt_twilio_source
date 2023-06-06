@@ -33,7 +33,7 @@ final as (
         from,
         from_formatted,
         group_id,
-        id,
+        id as call_id,
         outgoing_caller_id,
         parent_call_id,
         price,

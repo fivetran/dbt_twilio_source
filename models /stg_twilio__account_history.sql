@@ -23,7 +23,7 @@ final as (
         _fivetran_synced,
         created_at,
         friendly_name,
-        id,
+        id as account_id,
         owner_account_id,
         status,
         type,

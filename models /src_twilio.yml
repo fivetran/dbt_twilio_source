@@ -18,6 +18,9 @@ sources:
         identifier: "{{ var('twilio_account_history_identifier', 'account_history' )}}"
         description:
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: created_at
             description: The date and time when the account history record was created.
 
@@ -28,7 +31,7 @@ sources:
             description: The unique identifier for the account history record.
 
           - name: owner_account_id
-            description: The unique identifier of the owner account associated with the event.
+            description: The unique id that represents the parent of this account. The OwnerAccountSid of a parent account is it's own sid.
 
           - name: status
             description: The status or state of the account history event.
@@ -43,6 +46,9 @@ sources:
         identifier: "{{ var('twilio_address_identifier', 'address' )}}"
         description:
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: account_id
             description: >
               The unique identifier of the account associated with the address.
@@ -103,6 +109,9 @@ sources:
         identifier: "{{ var('twilio_call_identifier', 'call' )}}"
         description: Each record represents a phone call that occurred or is scheduled to occur.
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: account_id
             description: >
               The unique identifier for the Account responsible for this Call.
@@ -119,7 +128,7 @@ sources:
             description: >
               The caller's name, if available.
       
-          - name: date_created
+          - name: created_at
             description: >
               The date and time when the Call was created, given as GMT in RFC 2822 format.
       
@@ -139,7 +148,7 @@ sources:
             description: >
               The phone number that initiated the Call, if applicable.
       
-  - name: from
+          - name: from
             description: >
               The phone number or client identifier that made the Call.
       
@@ -173,7 +182,7 @@ sources:
       
           - name: queue_time
             description: >
-              The time spent in the queue before the Call was answered, in seconds.
+              The time spent in the queue before the Call is placed, in milliseconds.
       
           - name: start_time
             description: >
@@ -195,14 +204,17 @@ sources:
             description: >
               The unique identifier for the Trunk resource associated with the Call.
       
-          - name: date_updated
+          - name: updated_at
             description: >
               The date and time when the Call record was last updated, given as GMT in RFC 2822 format.
         
       - name: incoming_phone_number
         identifier: "{{ var('twilio_incoming_phone_number_identifier', 'incoming_phone_number' )}}"
         description: Each record represents a phone number that is capable of receiving incoming voice, SMS, or MMS messages.
-        columns: 
+        columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record.  
+
           - name: account_id
             description: >
               The unique identifier of the Account that owns this phone number resource.
@@ -219,19 +231,19 @@ sources:
             description: >
               Whether this phone number is a beta number.
 
-          - name: capabilities.mms
+          - name: capabilities_mms
             description: >
               Indicates whether this phone number is capable of sending and receiving MMS messages.
 
-          - name: capabilities.sms
+          - name: capabilities_sms
             description: >
               Indicates whether this phone number is capable of sending and receiving SMS messages.
 
-          - name: capabilities.voice
+          - name: capabilities_voice
             description: >
               Indicates whether this phone number is capable of making and receiving voice calls.
 
-          - name: date_created
+          - name: created_at
             description: >
               The date and time this phone number resource was created.
 
@@ -263,7 +275,7 @@ sources:
             description: >
               The unique identifier of the Trunk resource responsible for the phone number.
 
-          - name: date_updated
+          - name: updated_at
             description: >
               The date and time this phone number resource was last updated.
 
@@ -279,6 +291,9 @@ sources:
         identifier: "{{ var('twilio_message_identifier', 'message' )}}"
         description:  Each record represents an individual outbound or inbound message.
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: account_id
             description: The unique identifier of the Account that sent or received the message.
 
@@ -292,13 +307,13 @@ sources:
             description: The timestamp indicating when the message was sent.
 
           - name: direction
-            description: The direction of the message. Either `inbound` for inbound messages or `outbound-api` for outbound messages initiated via the REST API.
+            description: The direction of the message.  Can be inbound for incoming messages, outbound-api for messages initiated by a REST API, outbound-call for messages initiated during a call, or outbound-reply for messages initiated in response to an incoming message.
 
           - name: error_code
             description: The error code associated with the message, if applicable.
 
           - name: error_message
-            description: The error message associated with the message, if applicable.
+            description: The description of the error_code if your message status is failed or undelivered. If the message was successful, this value is null.
 
           - name: from
             description: The phone number or sender ID that sent the message.
@@ -313,7 +328,7 @@ sources:
             description: The number of media (e.g., images, videos) included in the message.
 
           - name: num_segments
-            description: The number of segments the message contains.
+            description: The number of segments the message contains. A message body that is too large to be sent in a single SMS message is segmented and charged as multiple messages. Inbound messages over 160 characters are reassembled when the message is received. Note, when using a Messaging Service to send messages, num_segments will always be 0 in Twilio's response to your API request.
 
           - name: price
             description: The cost of the message.
@@ -334,13 +349,16 @@ sources:
         identifier: "{{ var('twilio_messaging_service_identifier', 'messaging_service' )}}"
         description:
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: account_id
             description: >
               The unique identifier of the account that owns the messaging service.
 
           - name: area_code_geomatch
             description: >
-              Specifies whether phone numbers used by this messaging service are required to be geo-matched to the message sender's area code.
+              Boolean of whether phone numbers used by this messaging service are required to be geo-matched to the message sender's area code.
 
           - name: created_at
             description: >
@@ -356,7 +374,7 @@ sources:
 
           - name: fallback_url
             description: >
-              The URL that Twilio will request if an error occurs in the messaging service and the fallback method is set to "POST" or "GET".
+              The URL that Twilio will request  if an error occurs while retrieving or executing the TwiML from the Inbound Request URL.
 
           - name: friendly_name
             description: >
@@ -372,7 +390,7 @@ sources:
 
           - name: inbound_request_url
             description: >
-              The URL that Twilio will request to pass inbound messages to the messaging service.
+              The URL we call using inbound_method when a message is received by any phone number or short code in the Service. When this property is null, receiving inbound messages is disabled. All messages sent to the Twilio phone number or short code will not be logged and received on the Account. If the use_inbound_webhook_on_number field is enabled then the webhook url defined on the phone number will override the inbound_request_url defined for the Messaging Service.
 
           - name: mms_converter
             description: >
@@ -402,11 +420,11 @@ sources:
             description: >
               The date and time when the messaging service was last updated.
 
-          - name: us_app_to_person_routing_enabled
+          - name: us_app_to_person_registered
             description: >
               Specifies whether to enable or disable routing inbound messages to the messaging service using US App-to-Person (A2P) routing.
 
-          - name: use_inbound_webhooks
+          - name: use_inbound_webhook_on_number
             description: >
               Specifies whether to use inbound webhooks for handling incoming messages to the messaging service.
 
@@ -416,45 +434,51 @@ sources:
 
           - name: validity_period
             description: >
-              Specifies the duration (in seconds) that Twilio should attempt to deliver an outbound message from the messaging service.
+              How long, in seconds, messages sent from the Service are valid. Can be an integer from 1 to 14,400.
         
       - name: outgoing_caller_id
         identifier: "{{ var('twilio_outgoing_caller_id_identifier', 'outgoing_caller_id' )}}"
         description:
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+
           - name: created_at
-            description: The date and time the messaging service resource was created.
+            description: 	The date that this resource was created, given in RFC 2822 format.
 
           - name: friendly_name
-            description: A user-defined string that identifies this messaging service resource.
+            description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
 
           - name: id
-            description: The unique string that identifies the messaging service resource.
+            description: The unique string that identifies this resource.
 
           - name: phone_number
-            description: The phone number associated with this messaging service.
+            description: The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
 
           - name: updated_at
-            description: The date and time the messaging service resource was last updated.
+            description: The date that this resource was last updated, given in RFC 2822 format.
         
       - name: usage_record
         identifier: "{{ var('twilio_usage_record_identifier', 'usage_record' )}}"
         description: Each record provides details about resource consumption in Twilio.
         columns:
+          - name: _fivetran_synced
+            description: timestamp of when fivetran synced a record. 
+            
           - name: account_id
             description: The unique identifier of the account associated with the usage record.
 
           - name: as_of
-            description: The timestamp when the usage record was generated.
+            description: Usage records up to date as of this timestamp, formatted as YYYY-MM-DDTHH:MM:SS+00:00. All timestamps are in GMT
 
           - name: category
-            description: The category of the resource or service being measured.
+            description: The category of usage.
 
           - name: count
-            description: The count or quantity of the resource consumed.
+            description: The number of usage events, such as the number of calls.
 
           - name: count_unit
-            description: The unit of measurement for the count or quantity.
+            description: The units in which count is measured, such as calls for calls or messages for SMS.
 
           - name: description
             description: A brief description or summary of the usage record.
@@ -469,12 +493,12 @@ sources:
             description: The currency unit for the price.
 
           - name: start_date
-            description: The start date of the usage period for the record.
+            description: The first date for which usage is included in this UsageRecord. The date is specified in GMT and formatted as YYYY-MM-DD.
 
           - name: usage
-            description: The value or measurement of the resource consumed.
+            description: The amount used to bill usage and measured in units described in usage_unit.
 
           - name: usage_unit
-            description: The unit of measurement for the resource consumption value.
+            description: The units in which usage is measured, such as minutes for calls or messages for SMS.
         
 

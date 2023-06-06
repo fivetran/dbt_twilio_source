@@ -23,7 +23,7 @@ final as (
         _fivetran_synced,
         created_at,
         friendly_name,
-        id,
+        id as outgoing_caller_id,
         phone_number,
         updated_at
     from fields

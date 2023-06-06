@@ -27,7 +27,7 @@ final as (
         customer_name,
         emergency_enabled,
         friendly_name,
-        id,
+        id as address_id,
         iso_country,
         postal_code,
         region,
