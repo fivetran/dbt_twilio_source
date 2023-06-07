@@ -11,7 +11,6 @@
     {"name": "duration", "datatype": dbt.type_string()},
     {"name": "end_time", "datatype": dbt.type_timestamp()},
     {"name": "forwarded_from", "datatype": dbt.type_string()},
-    {"name": "from", "alias": "call_from", "datatype": dbt.type_string()},
     {"name": "from_formatted", "datatype": dbt.type_string()},
     {"name": "group_id", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
@@ -22,11 +21,22 @@
     {"name": "queue_time", "datatype": dbt.type_string()},
     {"name": "start_time", "datatype": dbt.type_timestamp()},
     {"name": "status", "datatype": dbt.type_string()},
-    {"name": "to", "alias": "call_to", "datatype": dbt.type_string() },
     {"name": "to_formatted", "datatype": dbt.type_string()},
     {"name": "trunk_id", "datatype": dbt.type_string()},
     {"name": "updated_at", "datatype": dbt.type_timestamp()}
 ] %}
+
+{% if target.type == 'bigquery' %}
+{{ columns.append( {"name": "from", "datatype": dbt.type_string(), "alias": "call_from", "quote": true} ) }}
+{% else %}
+{{ columns.append( {"name": "from", "alias": "call_from", "datatype": dbt.type_string()} ) }}
+{% endif %} ,
+
+{% if target.type == 'bigquery' %}
+{{ columns.append( {"name": "to", "datatype": dbt.type_string(), "alias": "call_to", "quote": true} ) }}
+{% else %}
+{{ columns.append( {"name": "to", "alias": "call_to", "datatype": dbt.type_string()} ) }}
+{% endif %} ,
 
 {{ return(columns) }}
 
