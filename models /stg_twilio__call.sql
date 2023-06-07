@@ -30,7 +30,7 @@ final as (
         duration,
         end_time,
         forwarded_from,
-        from,
+        call_from, -- renamed in the get_call_columns macro
         from_formatted,
         group_id,
         id as call_id,
@@ -41,7 +41,7 @@ final as (
         queue_time,
         start_time,
         status,
-        to,
+        call_to, -- renamed in the get_call_columns macro
         to_formatted,
         trunk_id,
         updated_at

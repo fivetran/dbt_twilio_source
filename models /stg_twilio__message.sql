@@ -28,7 +28,7 @@ final as (
         direction,
         error_code,
         error_message,
-        from as message_from,
+        message_from, -- renamed in the get_message_columns macro
         id as message_id,
         messaging_service_sid,
         num_media,
@@ -36,7 +36,7 @@ final as (
         price,
         price_unit,
         status,
-        to,
+        message_to, -- renamed in the get_message_columns macro
         updated_at
     from fields
 )
