@@ -26,17 +26,17 @@
     {"name": "updated_at", "datatype": dbt.type_timestamp()}
 ] %}
 
-{% if target.type == 'bigquery' %}
-{{ columns.append( {"name": "from", "datatype": dbt.type_string(), "alias": "call_from", "quote": true} ) }}
+{% if target.type == 'snowflake' %}
+ {{ columns.append({"name": "FROM", "datatype": dbt.type_string(), "quote": True, "alias": "call_from"}) }}
 {% else %}
-{{ columns.append( {"name": "from", "alias": "call_from", "datatype": dbt.type_string()} ) }}
-{% endif %} ,
+ {{ columns.append({"name": "from", "datatype": dbt.type_string(), "quote": True, "alias": "call_from"}) }}
+{% endif %},
 
-{% if target.type == 'bigquery' %}
-{{ columns.append( {"name": "to", "datatype": dbt.type_string(), "alias": "call_to", "quote": true} ) }}
+{% if target.type == 'snowflake' %}
+ {{ columns.append({"name": "TO", "datatype": dbt.type_string(), "quote": True, "alias": "call_to"}) }}
 {% else %}
-{{ columns.append( {"name": "to", "alias": "call_to", "datatype": dbt.type_string()} ) }}
-{% endif %} ,
+ {{ columns.append({"name": "to", "datatype": dbt.type_string(), "quote": True, "alias": "call_to"}) }}
+{% endif %},
 
 {{ return(columns) }}
 

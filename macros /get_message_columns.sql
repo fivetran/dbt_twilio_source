@@ -19,18 +19,17 @@
     {"name": "updated_at", "datatype": dbt.type_timestamp()}
 ] %}
 
-{% if target.type == 'bigquery' %}
-{{ columns.append( {"name": "from", "datatype": dbt.type_string(), "alias": "message_from", "quote": true} ) }}
+{% if target.type == 'snowflake' %}
+ {{ columns.append({"name": "FROM", "datatype": dbt.type_string(), "quote": True, "alias": "message_from"}) }}
 {% else %}
-{{ columns.append( {"name": "from", "alias": "message_from", "datatype": dbt.type_string()} ) }}
-{% endif %} ,
+ {{ columns.append({"name": "from", "datatype": dbt.type_string(), "quote": True, "alias": "message_from"}) }}
+{% endif %},
 
-{% if target.type == 'bigquery' %}
-{{ columns.append( {"name": "to", "datatype": dbt.type_string(), "alias": "message_to", "quote": true} ) }}
+{% if target.type == 'snowflake' %}
+ {{ columns.append({"name": "TO", "datatype": dbt.type_string(), "quote": True, "alias": "message_to"}) }}
 {% else %}
-{{ columns.append( {"name": "to", "alias": "message_to", "datatype": dbt.type_string()} ) }}
-{% endif %} ,
-
+ {{ columns.append({"name": "to", "datatype": dbt.type_string(), "quote": True, "alias": "message_to"}) }}
+{% endif %},
 {{ return(columns) }}
 
 {% endmacro %}
