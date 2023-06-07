@@ -11,7 +11,7 @@
     {"name": "duration", "datatype": dbt.type_string()},
     {"name": "end_time", "datatype": dbt.type_timestamp()},
     {"name": "forwarded_from", "datatype": dbt.type_string()},
-    {"name": "from", "datatype": dbt.type_string(), "alias": "call_from"},
+    {"name": "from", "alias": "call_from", "datatype": dbt.type_string()},
     {"name": "from_formatted", "datatype": dbt.type_string()},
     {"name": "group_id", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
@@ -22,7 +22,7 @@
     {"name": "queue_time", "datatype": dbt.type_string()},
     {"name": "start_time", "datatype": dbt.type_timestamp()},
     {"name": "status", "datatype": dbt.type_string()},
-    {"name": "to", "datatype": dbt.type_string(), "asia": "call_to"},
+    {"name": "to", "alias": "call_to", "datatype": dbt.type_string() },
     {"name": "to_formatted", "datatype": dbt.type_string()},
     {"name": "trunk_id", "datatype": dbt.type_string()},
     {"name": "updated_at", "datatype": dbt.type_timestamp()}

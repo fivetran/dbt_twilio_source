@@ -9,7 +9,7 @@
     {"name": "direction", "datatype": dbt.type_string()},
     {"name": "error_code", "datatype": dbt.type_string()},
     {"name": "error_message", "datatype": dbt.type_string()},
-    {"name": "from", "datatype": dbt.type_string(), "alias": "message_from"},
+    {"name": "from", "alias": "message_from", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
     {"name": "messaging_service_sid", "datatype": dbt.type_string()},
     {"name": "num_media", "datatype": dbt.type_string()},
@@ -17,7 +17,7 @@
     {"name": "price", "datatype": dbt.type_string()},
     {"name": "price_unit", "datatype": dbt.type_string()},
     {"name": "status", "datatype": dbt.type_string()},
-    {"name": "to", "datatype": dbt.type_string(), "alias": "message_to"},
+    {"name": "to", "alias": "message_to", "datatype": dbt.type_string()},
     {"name": "updated_at", "datatype": dbt.type_timestamp()}
 ] %}
 
