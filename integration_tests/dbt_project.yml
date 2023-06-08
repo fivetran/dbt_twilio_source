@@ -11,12 +11,7 @@ vars:
 seeds:
   twilio_source_integration_tests:
     +column_types:
-      to: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-      from: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-    twilio_incoming_phone_number_data:
-      phone_number: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-    twilio_call_data:
-      forwarded_from: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-      from: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-      to: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
-  
+      to: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+      from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+      forwarded_from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+      phone_number: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
