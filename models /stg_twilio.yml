@@ -36,7 +36,6 @@ models:
 
   - name: stg_twilio__address
     description: A table containing records about your or your customer’s physical location within a country
-    tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -103,7 +102,6 @@ models:
 
   - name: stg_twilio__call
     description: A table with information about each phone call that occurred or is scheduled to occur.
-    tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -209,8 +207,7 @@ models:
 
 
   - name: stg_twilio__incoming_phone_number
-    description: A table with information about each Twilio phone number provisioned from Twilio, ported or hosted to Twili
-    tests:
+    description: A table with information about each Twilio phone number provisioned from Twilio, ported or hosted to Twilio
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
@@ -448,7 +445,6 @@ models:
 
   - name: stg_twilio__outgoing_caller_id
     description: A table with information on each single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
-    tests:
     columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
