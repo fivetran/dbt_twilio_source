@@ -1,5 +1,5 @@
 
-name: 'dbt_twilio_source'
+name: 'twilio_source'
 version: '0.1.0'
 config-version: 2
 

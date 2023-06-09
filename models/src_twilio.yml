@@ -20,28 +20,21 @@ sources:
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record. 
-
           - name: created_at
             description: The date and time when the account history record was created.
-
           - name: friendly_name
             description: A user-friendly name or label associated with the account history event.
-
           - name: id
             description: The unique identifier for the account history record.
-
           - name: owner_account_id
             description: The unique id that represents the parent of this account. The OwnerAccountSid of a parent account is it's own sid.
-
           - name: status
             description: The status or state of the account history event.
-
           - name: type
             description: The type or category of the account history event.
-
           - name: updated_at
             description: The date and time when the account history record was last updated.
-                
+            
       - name: address
         identifier: "{{ var('twilio_address_identifier', 'address' )}}"
         description: Each record represents an Address instance that represents your or your customer’s physical location within a country
