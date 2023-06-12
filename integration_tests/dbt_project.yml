@@ -26,3 +26,11 @@ seeds:
       forwarded_from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
       phone_number: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
       friendly_name: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+    twilio_call_data:
+      +enabled: "{{ true if target.type != 'snowflake' else false }}"
+    twilio_message_data:
+      +enabled: "{{ true if target.type != 'snowflake' else false }}"
+    twilio_message_data_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+    twilio_call_data_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
