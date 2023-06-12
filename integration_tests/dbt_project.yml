@@ -25,3 +25,4 @@ seeds:
       from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
       forwarded_from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
       phone_number: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+      friendly_name: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"

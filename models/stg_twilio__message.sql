@@ -30,7 +30,7 @@ final as (
         error_message,
         message_from, -- renamed in the get_message_columns macro
         id as message_id,
-        messaging_service_sid,
+        messaging_service_sid as messaging_service_id,
         num_media,
         num_segments,
         price,

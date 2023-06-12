@@ -314,7 +314,7 @@ sources:
           - name: id
             description: The unique identifier for the message.
 
-          - name: messaging_service_id
+          - name: messaging_service_sid
             description: The unique identifier of the messaging service associated with the message.
 
           - name: num_media
