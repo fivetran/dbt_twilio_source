@@ -55,8 +55,14 @@ By default, all variables are assumed to be `true`.
 
 ```yml
 vars:
-# finish
-
+  using_twilio_account_history: False # Disable this if not using account_history 
+  using_twilio_address: False # Disable this if not using address 
+  using_twilio_call: False # Disable this if not using call  
+  using_twilio_incoming_phone_number: False # Disable this if not using incoming_phone_number 
+  using_twilio_message: False # Disable this if not using message 
+  using_twilio_messaging_service: False # Disable this if not using messaging_service 
+  using_twilio_outgoing_caller_id: False # Disable this if not using outgoing_caller_id  
+  using_twilio_usage_record: False # Disable this if not using usage_record  
 ```
 
 ## (Optional) Step 5: Additional configurations
