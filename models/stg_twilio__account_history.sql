@@ -29,7 +29,7 @@ final as (
         owner_account_id,
         status,
         type,
-        updated_at
+        updated_at 
     from fields
 )
 
