@@ -8,9 +8,9 @@ sources:
     loader: fivetran
     loaded_at_field: _fivetran_synced
       
-    freshness:
-      warn_after: {count: 72, period: hour}
-      error_after: {count: 168, period: hour}
+    freshness: 
+      warn_after: {count: 72, period: hour} 
+      error_after: {count: 168, period: hour} 
 
 
     tables:
@@ -43,8 +43,8 @@ sources:
             description: timestamp of when fivetran synced a record. 
 
           - name: account_id
-            description: >
-              The unique identifier of the account associated with the address.
+            description: > 
+              The unique identifier of the account associated with the address. 
 
           - name: city
             description: >
@@ -203,7 +203,7 @@ sources:
         
       - name: incoming_phone_number
         identifier: "{{ var('twilio_incoming_phone_number_identifier', 'incoming_phone_number' )}}"
-        description: Each record represents a Twilio phone number provisioned from Twilio, ported or hosted to Twili
+        description: Each record represents a Twilio phone number provisioned from Twilio, ported or hosted to Twilio
         columns:
           - name: _fivetran_synced
             description: timestamp of when fivetran synced a record.  
@@ -437,7 +437,7 @@ sources:
             description: timestamp of when fivetran synced a record. 
 
           - name: created_at
-            description: 	The date that this resource was created, given in RFC 2822 format.
+            description: The date that this resource was created, given in RFC 2822 format.
 
           - name: friendly_name
             description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
@@ -456,7 +456,7 @@ sources:
         description: Each record provides details about resource consumption in Twilio.
         columns:
           - name: _fivetran_synced
-            description: timestamp of when fivetran synced a record. 
+            description: Timestamp of when fivetran synced a record. 
             
           - name: account_id
             description: The unique identifier of the account associated with the usage record.

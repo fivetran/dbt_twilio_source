@@ -6,8 +6,8 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - account_id
-            - updated_at
+            - account_id 
+            - updated_at 
     columns:
       - name: _fivetran_synced
         description: timestamp of when fivetran synced a record. 
@@ -285,9 +285,9 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - account_id
-            - message_id
-            - messaging_service_id
+            - account_id 
+            - message_id 
+            - messaging_service_id 
     columns:
       - name: _fivetran_synced
         description: timestamp of when fivetran synced a record. 
@@ -349,8 +349,8 @@ models:
     tests: 
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - account_id
-            - messaging_service_id
+            - account_id 
+            - messaging_service_id 
     columns:
       - name: _fivetran_deleted
         description: Whether the record has been deleted
@@ -447,7 +447,7 @@ models:
     description: A table with information on each single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
     columns:
       - name: _fivetran_synced
-        description: timestamp of when fivetran synced a record. 
+        description: Timestamp of when fivetran synced a record. 
 
       - name: outgoing_caller_id
         description: The unique string that identifies this resource.
@@ -456,7 +456,7 @@ models:
           - not_null
         
       - name: created_at
-        description: 	The date that this resource was created, given in RFC 2822 format.
+        description: The date that this resource was created, given in RFC 2822 format.
 
       - name: friendly_name
         description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
@@ -473,10 +473,10 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - category
-            - start_date
-            - end_date
-            - account_id
+            - category 
+            - start_date 
+            - end_date 
+            - account_id 
     columns:
       - name: _fivetran_synced
         description: timestamp of when fivetran synced a record. 

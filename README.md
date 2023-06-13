@@ -10,7 +10,7 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/))
+# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/)) 
 # 📣 What does this dbt package do?
 
 - Materializes [Twilio staging tables](https://fivetran.github.io/dbt_twilio_source/#!/overview/twilio_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/twilio#schemainformation). These staging tables clean, test, and prepare your Twilio data from [Fivetran's connector](https://fivetran.com/docs/applications/twilio) for analysis by doing the following:
@@ -26,7 +26,7 @@
 To use this dbt package, you must have the following:
 
 - At least one Fivetran Twilio connector syncing data into your destination.
-- A **BigQuery**, **Snowflake**, **Redshift**, or **PostgreSQL** destination.
+- A **BigQuery**, **Snowflake**, **Redshift**, or **PostgreSQL** destination. 
 ## Step 2: Install the package
 Include the following Twilio package version in your `packages.yml` file.
 
@@ -47,7 +47,7 @@ vars:
   twilio_schema: your_schema_name 
 ```
 
-## Step 4: Enabling/Disabling Models
+## Step 4: Enabling/Disabling Models 
 
 Your Twilio connector might not sync every table that this package expects. If your syncs exclude certain tables, it is either because you do not use that functionality in Twilio or have actively excluded some tables from your syncs. In order to enable or disable the relevant tables in the package, you will need to add the following variable(s) to your `dbt_project.yml` file.
 
@@ -71,7 +71,7 @@ vars:
 
 ### Changing the Build Schema
 
-By default, this package will build the Twilio staging models within a schema titled (<target_schema> + `_stg_twilio`) in your target database. If this is not where your would like you Twilio staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+By default, this package will build the Twilio staging models within a schema titled (<target_schema> + `_stg_twilio`) in your target database. If this is not where your would like you Twilio staging data to be written to, add the following configuration to your `dbt_project.yml` file: 
 
 ```yml
 models:
@@ -96,7 +96,7 @@ vars:
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
 </details>
 
-# 🔍 Does this package have dependencies?
+# 🔍 Does this package have dependencies? 
 This dbt package is dependent on the following dbt packages. Please be aware that these dependencies are installed by default within this package. For more information on the following packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
     
@@ -121,4 +121,4 @@ We highly encourage and welcome contributions to this package. Check out [this d
 # 🏪 Are there any resources available?
 - If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_twilio_source/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to just say hi? Book a time during our office hours [on Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com.
+- Have questions or want to just say hi? Book a time during our office hours [on Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com. 
