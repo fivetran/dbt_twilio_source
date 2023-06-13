@@ -71,7 +71,7 @@ vars:
 
 ### Changing the Build Schema
 
-By default, this package will build the Twilio staging models within a schema titled (<target_schema> + `_stg_twilio`) in your target database. If this is not where your would like you Twilio staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+By default, this package will build the Twilio staging models within a schema titled (<target_schema> + `_twilio_source`) in your target database. If this is not where your would like you Twilio staging data to be written to, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 models:

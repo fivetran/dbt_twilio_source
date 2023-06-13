@@ -28,15 +28,11 @@
 
 {% if target.type == 'snowflake' %}
     {{ columns.append({"name": "FROM", "datatype": dbt.type_string(), "quote": True, "alias": "call_from"}) }}
-{% else %}
-    {{ columns.append({"name": "from", "datatype": dbt.type_string(), "quote": True, "alias": "call_from"}) }}
-{% endif %},
-
-{% if target.type == 'snowflake' %}
     {{ columns.append({"name": "TO", "datatype": dbt.type_string(), "quote": True, "alias": "call_to"}) }}
-{% else %}
+    {% else %}
+    {{ columns.append({"name": "from", "datatype": dbt.type_string(), "quote": True, "alias": "call_from"}) }}
     {{ columns.append({"name": "to", "datatype": dbt.type_string(), "quote": True, "alias": "call_to"}) }}
-{% endif %},
+{% endif %}
 
 {{ return(columns) }}
 

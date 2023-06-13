@@ -14,6 +14,8 @@ models:
 
       - name: account_id
         description: The unique identifier for the account history record.
+        tests:
+          - not_null
 
       - name: created_at
         description: The date and time when the account history record was created.
@@ -294,9 +296,14 @@ models:
 
       - name: message_id
         description: The unique identifier for the message.
+        tests:
+          - not_null
+          - unique
         
       - name: account_id
         description: The unique identifier of the Account that sent or received the message.
+        tests:
+          - not_null
 
       - name: body
         description: The text of the message.
@@ -321,6 +328,8 @@ models:
 
       - name: messaging_service_id
         description: The unique identifier of the messaging service associated with the message.
+        tests:
+          - not_null
 
       - name: num_media
         description: The number of media (e.g., images, videos) included in the message.
@@ -358,6 +367,9 @@ models:
       - name: messaging_service_id
         description: >
           The unique identifier of the messaging service.
+        tests:
+          - not_null
+          - unique
 
       - name: _fivetran_synced
         description: timestamp of when fivetran synced a record. 
@@ -365,6 +377,8 @@ models:
       - name: account_id
         description: >
           The unique identifier of the account that owns the messaging service.
+        tests:
+          - not_null
 
       - name: area_code_geomatch
         description: >
@@ -447,7 +461,7 @@ models:
     description: A table with information on each single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
     columns:
       - name: _fivetran_synced
-        description: timestamp of when fivetran synced a record. 
+        description: timestamp of when fivetran synced a record.
 
       - name: outgoing_caller_id
         description: The unique string that identifies this resource.
@@ -456,7 +470,7 @@ models:
           - not_null
         
       - name: created_at
-        description: 	The date that this resource was created, given in RFC 2822 format.
+        description: The date that this resource was created, given in RFC 2822 format.
 
       - name: friendly_name
         description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
@@ -483,12 +497,16 @@ models:
         
       - name: account_id
         description: The unique identifier of the account associated with the usage record.
+        tests:
+          - not_null
 
       - name: as_of
         description: Usage records up to date as of this timestamp, formatted as YYYY-MM-DDTHH:MM:SS+00:00. All timestamps are in GMT
 
       - name: category
         description: The category of usage.
+        tests:
+          - not_null
 
       - name: count
         description: The number of usage events, such as the number of calls.
@@ -501,6 +519,8 @@ models:
 
       - name: end_date
         description: The end date of the usage period for the record.
+        tests:
+          - not_null
 
       - name: price
         description: The cost or price associated with the resource usage.
@@ -510,6 +530,8 @@ models:
 
       - name: start_date
         description: The first date for which usage is included in this UsageRecord. The date is specified in GMT and formatted as YYYY-MM-DD.
+        tests:
+          - not_null
 
       - name: usage
         description: The amount used to bill usage and measured in units described in usage_unit.

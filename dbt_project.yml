@@ -6,7 +6,7 @@ config-version: 2
 models:
   twilio_source:
     +materialized: table
-    +schema: stg_twilio
+    +schema: twilio_source
     tmp:
       +materialized: view
 vars:
