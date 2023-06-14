@@ -1,6 +1,3 @@
---To disable this model, set the using_domain_names variable within your dbt_project.yml file to False.
-{{ config(enabled=var('using_twilio_account_history', True)) }}
-
 with base as (
 
     select * 
@@ -29,9 +26,11 @@ final as (
         owner_account_id,
         status,
         type,
-        updated_at
+        updated_at,
+        row_number() over (partition by id order by updated_at desc) = 1 as is_most_recent_record
     from fields
 )
 
 select *
 from final
+where is_most_recent_record

@@ -17,6 +17,9 @@ vars:
     message: "{{ fivetran_utils.snowflake_seed_data('twilio_message_data') }}" 
     
 
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
   twilio_source_integration_tests:

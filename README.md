@@ -26,7 +26,16 @@
 To use this dbt package, you must have the following:
 
 - At least one Fivetran Twilio connector syncing data into your destination.
-- A **BigQuery**, **Snowflake**, **Redshift**, or **PostgreSQL** destination.
+- A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
+
+### Databricks Dispatch Configuration
+If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+```yml
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+```
+
 ## Step 2: Install the package
 Include the following Twilio package version in your `packages.yml` file.
 
@@ -49,20 +58,15 @@ vars:
 
 ## Step 4: Enabling/Disabling Models
 
-Your Twilio connector might not sync every table that this package expects. If your syncs exclude certain tables, it is either because you do not use that functionality in Twilio or have actively excluded some tables from your syncs. In order to enable or disable the relevant tables in the package, you will need to add the following variable(s) to your `dbt_project.yml` file.
+Your Twilio connector might not sync every table that this package expects, for example if you are not using the Twilio call or message features. If your syncs exclude certain tables, it is either because you do not use that functionality in Twilio or have actively excluded some tables from your syncs. In order to enable or disable the relevant tables in the package, you will need to add the following variable(s) to your `dbt_project.yml` file.
 
 By default, all variables are assumed to be `true`.
 
 ```yml
 vars:
-  using_twilio_account_history: False # Disable this if not using account_history 
-  using_twilio_address: False # Disable this if not using address 
-  using_twilio_call: False # Disable this if not using call  
-  using_twilio_incoming_phone_number: False # Disable this if not using incoming_phone_number 
+  using_twilio_call: False # Disable this if not using call
   using_twilio_message: False # Disable this if not using message 
-  using_twilio_messaging_service: False # Disable this if not using messaging_service 
-  using_twilio_outgoing_caller_id: False # Disable this if not using outgoing_caller_id  
-  using_twilio_usage_record: False # Disable this if not using usage_record  
+  using_twilio_messaging_service: False # Disable this if not using messaging_service
 ```
 
 ## (Optional) Step 5: Additional configurations
@@ -107,6 +111,9 @@ packages:
 
     - package: dbt-labs/dbt_utils
       version: [">=1.0.0", "<2.0.0"]
+
+    - package: dbt-labs/spark_utils
+      version: [">=0.3.0", "<0.4.0"]
 ```
 
 # 🙌 How is this package maintained and can I contribute?
@@ -119,6 +126,6 @@ A small team of analytics engineers at Fivetran develops these dbt packages. How
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
 # 🏪 Are there any resources available?
-- If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_twilio_source/issues/new/choose) section to find the right avenue of support for you.
+- If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_zendesk/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to just say hi? Book a time during our office hours [on Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com.
+- Have questions or want to be part of the community discourse? Create a post in the [Fivetran community](https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group) and our team along with the community can join in on the discussion!
