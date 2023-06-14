@@ -24,11 +24,11 @@ dispatch:
 seeds:
   twilio_source_integration_tests:
     +column_types:
-      to: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
-      from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
-      forwarded_from: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
-      phone_number: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
-      friendly_name: "{{ 'string' if target.type in ['bigquery','spark'] else 'varchar' }}"
+      to: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
+      from: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
+      forwarded_from: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
+      phone_number: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
+      friendly_name: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
     twilio_call_data:
       +enabled: "{{ true if target.type != 'snowflake' else false }}"
     twilio_message_data:
