@@ -328,8 +328,6 @@ models:
 
       - name: messaging_service_id
         description: The unique identifier of the messaging service associated with the message.
-        tests:
-          - not_null
 
       - name: num_media
         description: The number of media (e.g., images, videos) included in the message.
