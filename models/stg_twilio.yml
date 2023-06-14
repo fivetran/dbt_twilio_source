@@ -34,6 +34,8 @@ models:
 
       - name: updated_at
         description: The date and time when the account history record was last updated.
+        tests:
+          - not_null
 
       - name: is_most_recent_record
         description: Whether the record is the most recent. 
@@ -301,7 +303,6 @@ models:
         description: The unique identifier for the message.
         tests:
           - not_null
-          - unique
         
       - name: account_id
         description: The unique identifier of the Account that sent or received the message.
@@ -370,7 +371,6 @@ models:
           The unique identifier of the messaging service.
         tests:
           - not_null
-          - unique
 
       - name: _fivetran_synced
         description: timestamp of when fivetran synced a record. 

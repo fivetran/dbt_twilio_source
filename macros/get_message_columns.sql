@@ -19,7 +19,7 @@
     {"name": "price", "datatype": dbt.type_string()},
     {"name": "price_unit", "datatype": dbt.type_string()},
     {"name": "status", "datatype": dbt.type_string()},
-    {"name": "updated_at", "datatype": dbt.type_timestamp()}
+    {"name": "updated_at", "datatype": dbt.type_timestamp()},
 ] %}
 
 {% if target.type == 'snowflake' %}

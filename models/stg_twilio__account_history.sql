@@ -33,4 +33,3 @@ final as (
 
 select *
 from final
-where is_most_recent_record

@@ -26,7 +26,7 @@
     {"name": "status", "datatype": dbt.type_string()},
     {"name": "to_formatted", "datatype": dbt.type_string()},
     {"name": "trunk_id", "datatype": dbt.type_string()},
-    {"name": "updated_at", "datatype": dbt.type_timestamp()}
+    {"name": "updated_at", "datatype": dbt.type_timestamp()},
 ] %}
 
 {% if target.type == 'snowflake' %}
