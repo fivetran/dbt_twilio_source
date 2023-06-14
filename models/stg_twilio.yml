@@ -35,6 +35,9 @@ models:
       - name: updated_at
         description: The date and time when the account history record was last updated.
 
+      - name: is_most_recent_record
+        description: Whether the record is the most recent. 
+
 
   - name: stg_twilio__address
     description: A table containing records about your or your customer’s physical location within a country
@@ -151,7 +154,7 @@ models:
         description: >
           The phone number that initiated the Call, if applicable.
   
-      - name: from
+      - name: call_from
         description: >
           The phone number or client identifier that made the Call.
   
@@ -191,7 +194,7 @@ models:
         description: >
           The current status of the Call - `queued`, `ringing`, `in-progress`, `completed`, `busy`, `failed`, `no-answer`, or `canceled`.
   
-      - name: to
+      - name: call_to
         description: >
           The phone number or client identifier that received the Call.
   
@@ -344,7 +347,7 @@ models:
       - name: status
         description: The status of the message.
 
-      - name: to
+      - name: message_to
         description: The phone number or recipient ID that received the message.
 
       - name: updated_at
