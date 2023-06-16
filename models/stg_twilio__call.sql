@@ -38,7 +38,7 @@ final as (
         id as call_id,
         outgoing_caller_id,
         parent_call_id,
-        price,
+        cast(price as {{ dbt.type_float() }}) as price,
         price_unit,
         queue_time,
         start_time,

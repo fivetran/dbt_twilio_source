@@ -27,7 +27,7 @@ final as (
         count_unit,
         description,
         end_date,
-        price,
+        cast(price as {{ dbt.type_float() }}) as price,
         price_unit,
         start_date,
         usage,

@@ -35,7 +35,7 @@ final as (
         messaging_service_sid as messaging_service_id,
         num_media,
         num_segments,
-        price,
+        cast(price as {{ dbt.type_float() }}) as price,
         price_unit,
         status,
         message_to, -- renamed in the get_message_columns macro
