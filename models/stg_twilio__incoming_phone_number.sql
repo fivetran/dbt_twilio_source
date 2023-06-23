@@ -21,7 +21,7 @@ final as (
     select 
         _fivetran_synced,
         account_id,
-        cast(address_id as {{ dbt_utils.type_timestamp() }}) as address_id, 
+        cast(address_id as {{ dbt.type_timestamp() }}) as address_id, 
         capabilities_mms,
         capabilities_sms,
         capabilities_voice,
