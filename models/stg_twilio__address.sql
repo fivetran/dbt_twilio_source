@@ -26,7 +26,7 @@ final as (
         customer_name,
         emergency_enabled,
         friendly_name,
-        id as address_id,
+        cast(id as {{ dbt_utils.type_timestamp() }}) as address_id,
         iso_country,
         postal_code,
         region,

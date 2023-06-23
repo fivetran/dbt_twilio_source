@@ -26,7 +26,7 @@ final as (
         account_id,
         body,
         created_at,
-        date_sent,
+        cast(date_sent as {{ dbt.type_timestamp() }}) as date_sent,
         direction,
         error_code,
         error_message,
