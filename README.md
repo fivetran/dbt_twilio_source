@@ -56,20 +56,7 @@ vars:
   twilio_schema: your_schema_name 
 ```
 
-## Step 4: Enabling/Disabling Models
-
-Your Twilio connector might not sync every table that this package expects, for example if you are not using the Twilio call or message features. If your syncs exclude certain tables, it is either because you do not use that functionality in Twilio or have actively excluded some tables from your syncs. In order to enable or disable the relevant tables in the package, you will need to add the following variable(s) to your `dbt_project.yml` file.
-
-By default, all variables are assumed to be `true`.
-
-```yml
-vars:
-  using_twilio_call: False # Disable this if not using call
-  using_twilio_message: False # Disable this if not using message 
-  using_twilio_messaging_service: False # Disable this if not using messaging_service
-```
-
-## (Optional) Step 5: Additional configurations
+## (Optional) Step 4: Additional configurations
 <details><summary>Expand for details</summary>
 <br>
 
@@ -93,7 +80,7 @@ vars:
 
 </details>
 
-## (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
+## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for details</summary>
 <br>
     
