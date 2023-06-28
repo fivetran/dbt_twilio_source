@@ -335,7 +335,7 @@ sources:
             description: The currency unit for the message cost.
 
           - name: status
-            description: The status of the message.
+            description: The status of the message. Can be accepted, scheduled, canceled, queued, sending, sent, failed, delivered, undelivered, receiving, received, or read (WhatsApp only). 
 
           - name: to
             description: The phone number or recipient ID that received the message.

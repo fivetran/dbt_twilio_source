@@ -315,7 +315,7 @@ models:
       - name: created_at
         description: The timestamp indicating when the message was created.
 
-      - name: date_sent
+      - name: timestamp_sent
         description: The timestamp indicating when the message was sent.
 
       - name: direction
@@ -346,7 +346,7 @@ models:
         description: The currency unit for the message cost.
 
       - name: status
-        description: The status of the message.
+        description: The status of the message. Can be accepted, scheduled, canceled, queued, sending, sent, failed, delivered, undelivered, receiving, received, or read (WhatsApp only). 
 
       - name: message_to
         description: The phone number or recipient ID that received the message.
