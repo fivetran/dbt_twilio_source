@@ -40,7 +40,7 @@ final as (
         updated_at,
         us_app_to_person_registered,
         use_inbound_webhook_on_number,
-        usecase,
+        usecase as use_case,
         validity_period
     from fields
 )

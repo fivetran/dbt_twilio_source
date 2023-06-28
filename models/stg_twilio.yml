@@ -449,7 +449,7 @@ models:
         description: >
           Specifies whether to use inbound webhooks for handling incoming messages to the messaging service.
 
-      - name: usecase
+      - name: use_case
         description: >
           Specifies the intended use case of the messaging service.
 
