@@ -31,7 +31,7 @@ final as (
         fallback_to_long_code,
         fallback_url,
         friendly_name,
-        id as messaging_service_id,
+        cast(id as {{ dbt.type_string() }}) as messaging_service_id,
         inbound_method,
         inbound_request_url,
         mms_converter,
