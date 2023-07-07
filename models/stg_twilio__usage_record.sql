@@ -30,7 +30,7 @@ final as (
         cast(price as {{ dbt.type_float() }}) as price,
         price_unit,
         start_date,
-        usage,
+        cast(usage as {{ dbt.type_float() }}) as usage,
         usage_unit
     from fields
 )
