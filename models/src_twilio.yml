@@ -5,7 +5,7 @@ sources:
     database: "{{ var('twilio_database', target.database)}}"
     schema: "{{ var('twilio_schema', 'twilio')}}"
 
-    loader: fivetran
+    loader: Fivetran
     loaded_at_field: _fivetran_synced
 
     tables:
