@@ -63,6 +63,8 @@ By default, all variables are assumed to be `true`.
 
 ```yml
 vars:
+  using_twilio_call: False # Disable this if not using call
+  using_twilio_message: False # Disable this if not using message
   using_twilio_messaging_service: False # Disable this if not using messaging_service
 ```
 
