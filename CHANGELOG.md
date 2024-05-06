@@ -1,3 +1,9 @@
+# dbt_twilio_source v0.1.1
+
+## Features
+- Add the ability to disable two additional models when unavailable, refer to the [README](/README.md)
+- Adjust case of loader name in source YAML
+
 # dbt_twilio_source v0.1.0
 
 ## Initial Release

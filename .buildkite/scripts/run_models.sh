@@ -19,6 +19,10 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
+dbt run --vars '{using_twilio_call: false}' --target "$db" --full-refresh
+dbt test --target "$db"
+dbt run --vars '{using_twilio_message: false}' --target "$db" --full-refresh
+dbt test --target "$db"
 dbt run --vars '{using_twilio_messaging_service: false}' --target "$db" --full-refresh
 dbt test --target "$db"
 
