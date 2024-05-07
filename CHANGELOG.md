@@ -8,7 +8,6 @@
 - Adjusted the way we dynamically disable source freshness tests for tables that may be missing to use dbt's native `config.enabled` [flag](https://docs.getdbt.com/reference/resource-configs/enabled) ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
 - Updated the pull request [templates](/.github) ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
 - Included auto-releaser GitHub Actions workflow to automate future releases ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
-- Updated `_tmp` models to use the `dbt_utils.star` macro instead of a basic `select *` ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
 
 ## Contributors
 - [@raphaelvarieras](https://github.com/raphaelvarieras) ([PR #5](https://github.com/fivetran/dbt_twilio_source/pull/5))

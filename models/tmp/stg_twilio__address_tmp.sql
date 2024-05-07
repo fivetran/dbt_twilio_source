@@ -1,2 +1,2 @@
-select {{ dbt_utils.star(source('twilio', 'address')) }}
+select *
 from {{ var('address') }}

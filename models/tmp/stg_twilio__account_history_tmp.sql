@@ -1,2 +1,2 @@
-select {{ dbt_utils.star(source('twilio', 'account_history')) }}
+select *
 from {{ var('account_history') }}
