@@ -65,13 +65,12 @@ By default, all variables are assumed to be `true`.
 ```yml
 vars:
   using_twilio_call: False # Disable this if not using call
-  using_twilio_message: False # Disable this if not using message
   using_twilio_messaging_service: False # Disable this if not using messaging_service
 ```
 
 ## (Optional) Step 5: Additional configurations
 
-<details open><summary>Expand for details</summary>
+<details open><summary>Expand/Collapse details</summary>
 <br>
 
 ### Changing the Build Schema
