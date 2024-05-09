@@ -1,6 +1,6 @@
 # dbt_twilio_source v0.2.0
 
-## Breaking Changes
+## 🚨 Breaking Changes 🚨
 - Under the hood, we've updated the `_tmp` models to use the `dbt_utils.star` macro instead of a basic `select *` ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
   - This means that you can no longer use `var(<table_name>)` to override the source tables we create staging models from. Instead, see the [README](https://github.com/fivetran/dbt_twilio_source?tab=readme-ov-file#change-the-source-table-references) for how to use our `_identifier` variables.
 - Removed the deprecated `twilio_using_message` variable. This is a breaking change because you could previously use this variable to disable freshness tests on the `MESSAGE` source table. To continue to do so, leverage dbt [overrides](https://docs.getdbt.com/reference/resource-properties/overrides#configure-your-own-source-freshness-for-a-source-table-in-a-package) to set `message`'s freshness to `null` ([PR #6](https://github.com/fivetran/dbt_twilio_source/pull/6)).
