@@ -5,7 +5,7 @@ sources:
     database: "{{ var('twilio_database', target.database)}}"
     schema: "{{ var('twilio_schema', 'twilio')}}"
 
-    loader: fivetran
+    loader: Fivetran
     loaded_at_field: _fivetran_synced
 
     tables:
@@ -96,8 +96,8 @@ sources:
       - name: call
         identifier: "{{ var('twilio_call_identifier', 'call' )}}"
         description: Each record represents a phone call that occurred or is scheduled to occur.
-        meta:
-          is_enabled: "{{ var('using_twilio_call', true) }}"
+        config:
+          enabled: "{{ var('using_twilio_call', true) }}"
         freshness:
           warn_after: {count: 72, period: hour}
           error_after: {count: 168, period: hour}
@@ -283,8 +283,6 @@ sources:
       - name: message
         identifier: "{{ var('twilio_message_identifier', 'message' )}}"
         description:  Each record represents an individual outbound or inbound message.
-        meta:
-          is_enabled: "{{ var('using_twilio_message', true) }}"
         freshness:
           warn_after: {count: 72, period: hour}
           error_after: {count: 168, period: hour}
@@ -346,8 +344,8 @@ sources:
       - name: messaging_service
         identifier: "{{ var('twilio_messaging_service_identifier', 'messaging_service' )}}"
         description: Each record represents information about each messaging service. You can think of messaging services as a higher-level “bundling” of messaging functionality around a common set of senders, features, and configuration
-        meta:
-          is_enabled: "{{ var('using_twilio_messaging_service', true) }}"
+        config:
+          enabled: "{{ var('using_twilio_messaging_service', true) }}"
         columns:
           - name: _fivetran_synced
             description: Timestamp of when fivetran synced a record. 

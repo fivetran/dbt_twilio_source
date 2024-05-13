@@ -44,7 +44,7 @@ Include the following Twilio package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/twilio_source
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 ```
 
 ## Step 3: Define database and schema variables
@@ -55,6 +55,7 @@ vars:
   twilio_database: your_database_name
   twilio_schema: your_schema_name 
 ```
+
 ## Step 4: Enabling/Disabling Models
 
 Your Twilio connector might not sync every table that this package expects, for example if you are not using the Twilio messaging service feature. If your syncs exclude certain tables, it is either because you do not use that functionality in Twilio or have actively excluded some tables from your syncs. In order to enable or disable the relevant tables in the package, you will need to add the following variable(s) to your `dbt_project.yml` file.
@@ -63,12 +64,13 @@ By default, all variables are assumed to be `true`.
 
 ```yml
 vars:
+  using_twilio_call: False # Disable this if not using call
   using_twilio_messaging_service: False # Disable this if not using messaging_service
 ```
 
 ## (Optional) Step 5: Additional configurations
 
-<details><summary>Expand for details</summary>
+<details open><summary>Expand/Collapse details</summary>
 <br>
 
 ### Changing the Build Schema
@@ -80,8 +82,9 @@ models:
     twilio_source:
         +schema: my_new_schema_name # leave blank for just the target_schema
 ```
+
 ### Change the source table references
-If an individual source table has a different name than what the package expects, add the table name as it appears in your destination to the respective variable:
+If an individual source table has a different name than what the package expects (but is in the same schema and database as the other tables), add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_twilio_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
 ```yml
@@ -119,11 +122,10 @@ packages:
 The Fivetran team maintaining this package _only_ maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/twilio_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_twilio_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
 ## Contributions
-A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions! 
+A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions!
 
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
 # 🏪 Are there any resources available?
 - If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_twilio_source/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to be part of the community discourse? Create a post in the [Fivetran community](https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group) and our team along with the community can join in on the discussion!

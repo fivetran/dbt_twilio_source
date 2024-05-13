@@ -1,6 +1,6 @@
 
 name: 'twilio_source'
-version: '0.1.0'
+version: '0.2.0'
 config-version: 2
 
 models:
