@@ -23,7 +23,7 @@ final as (
         account_id,
         as_of,
         category,
-        count,
+        cast(count as {{ dbt.type_float() }}) as count,
         count_unit,
         description,
         end_date,
