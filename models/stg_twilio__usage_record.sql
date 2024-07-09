@@ -23,14 +23,14 @@ final as (
         account_id,
         as_of,
         category,
-        cast(count as {{ dbt.type_float() }}) as count,
+        cast( {{ twilio_source.remove_non_numeric_chars('count')}} as {{ dbt.type_float() }}) as count,
         count_unit,
         description,
         end_date,
-        cast(price as {{ dbt.type_float() }}) as price,
+        cast( {{ twilio_source.remove_non_numeric_chars('price')}} as {{ dbt.type_float() }}) as price,
         price_unit,
         start_date,
-        cast(usage as {{ dbt.type_float() }}) as usage,
+        cast( {{ twilio_source.remove_non_numeric_chars('usage')}} as {{ dbt.type_float() }}) as usage,
         usage_unit
     from fields
 )

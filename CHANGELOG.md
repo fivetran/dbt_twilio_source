@@ -1,6 +1,10 @@
-# dbt_twilio_source v0.2.1
+# dbt_twilio_source v0.3.0
 
-- Added explicit float casts to the following numerical fields: `duration, queue_time, num_media, num_segments, count`. These fields are listed as strings by default in the Twilio API, but would only be valuable as numbers. 
+## 🚨 Breaking Changes 🚨
+- Added explicit float casts to the following numerical fields: `duration, queue_time, num_media, num_segments, count` in addition to the existing `duration, price, count, usage` fields. These fields are listed as strings by default in the Twilio API, but would only be valuable as numbers. Please be aware if you were expecting string values from these fields.
+
+## Under the Hood
+- Created a `remove_non_numeric_chars` macro that uses the `REGEXP_REPLACE` function to clean up any non-numerical characters from the above fields.
 
 # dbt_twilio_source v0.2.0
 
