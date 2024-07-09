@@ -20,3 +20,8 @@
     REGEXP_REPLACE(cast ({{ column }} as {{ dbt.type_string() }}), '[^0-9.-]', '', 'g')
 
 {% endmacro %}
+
+{% macro redshift_remove_non_numeric_chars(input_string) %}
+    REGEXP_REPLACE(cast ({{ column }} as {{ dbt.type_string() }}), '[^0-9.-]', '')
+{% endmacro %}
+
