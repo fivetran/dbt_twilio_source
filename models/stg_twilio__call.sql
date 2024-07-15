@@ -29,7 +29,7 @@ final as (
         caller_name,
         created_at,
         direction,
-        duration,
+        cast( {{ twilio_source.remove_non_numeric_chars('duration')}} as {{ dbt.type_float() }}) as duration,
         end_time,
         forwarded_from,
         call_from, -- renamed in the get_call_columns macro
@@ -38,9 +38,9 @@ final as (
         id as call_id,
         outgoing_caller_id,
         parent_call_id,
-        cast(price as {{ dbt.type_float() }}) as price,
+        cast( {{ twilio_source.remove_non_numeric_chars('price')}} as {{ dbt.type_float() }}) as price,
         price_unit,
-        queue_time,
+        cast( {{ twilio_source.remove_non_numeric_chars('queue_time')}} as {{ dbt.type_float() }}) as queue_time,
         start_time,
         status,
         call_to, -- renamed in the get_call_columns macro

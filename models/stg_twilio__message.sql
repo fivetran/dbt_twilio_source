@@ -30,9 +30,9 @@ final as (
         message_from, -- renamed in the get_message_columns macro
         id as message_id,
         cast(messaging_service_sid as {{ dbt.type_string() }}) as messaging_service_id,
-        num_media,
-        num_segments,
-        cast(price as {{ dbt.type_float() }}) as price,
+        cast( {{ twilio_source.remove_non_numeric_chars('num_media')}} as {{ dbt.type_float() }}) as num_media,
+        cast( {{ twilio_source.remove_non_numeric_chars('num_segments')}} as {{ dbt.type_float() }}) as num_segments,
+        cast( {{ twilio_source.remove_non_numeric_chars('price')}} as {{ dbt.type_float() }}) as price,
         price_unit,
         status,
         message_to, -- renamed in the get_message_columns macro
