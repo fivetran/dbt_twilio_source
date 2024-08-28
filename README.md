@@ -14,9 +14,9 @@
 ## What does this dbt package do?
 
 - Materializes [Twilio staging tables](https://fivetran.github.io/dbt_twilio_source/#!/overview/twilio_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/twilio#schemainformation). These staging tables clean, test, and prepare your Twilio data from [Fivetran's connector](https://fivetran.com/docs/applications/twilio) for analysis by doing the following:
-- Adds descriptions to tables and columns that are synced using Fivetran
-- Models staging tables, which will be used in our transform package
-- Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
+  - Adds descriptions to tables and columns that are synced using Fivetran
+  - Models staging tables, which will be used in our transform package
+  - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Generates a comprehensive data dictionary of your source and modeled Twilio data through the [dbt docs site](https://fivetran.github.io/dbt_twilio_source/).
 - These tables are designed to work simultaneously with our [Twilio transformation package](https://github.com/fivetran/dbt_twilio/).
 
