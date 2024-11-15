@@ -1,3 +1,5 @@
+# dbt_twilio_source v0.4.0
+
 # dbt_twilio_source v0.3.0
 
 ## 🚨 Breaking Changes 🚨
