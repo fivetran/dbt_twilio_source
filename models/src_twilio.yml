@@ -291,29 +291,7 @@ sources:
           - name: validity_period
             description: 
               How long, in seconds, messages sent from the Service are valid. Can be an integer from 1 to 14,400.
-        
-      - name: outgoing_caller_id
-        identifier: "{{ var('twilio_outgoing_caller_id_identifier', 'outgoing_caller_id' )}}"
-        description: Each record represents information on a single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial verb.
-        columns:
-          - name: _fivetran_synced
-            description: Timestamp of when fivetran synced a record. 
 
-          - name: created_at
-            description: The date that this resource was created, given in RFC 2822 format.
-
-          - name: friendly_name
-            description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
-
-          - name: id
-            description: The unique string that identifies this resource.
-
-          - name: phone_number
-            description: The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
-
-          - name: updated_at
-            description: The date that this resource was last updated, given in RFC 2822 format.
-        
       - name: usage_record
         identifier: "{{ var('twilio_usage_record_identifier', 'usage_record' )}}"
         description: Each record provides details about resource consumption in Twilio.

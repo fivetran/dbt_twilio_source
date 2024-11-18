@@ -1,4 +1,8 @@
 # dbt_twilio_source v0.4.0
+- Removes the following models that are unused downstream, along with their related files and mentions.
+  - `stg_twilio__address`
+  - `stg_twilio__incoming_phone_number`
+  - `stg_twilio__outgoing_caller_id`
 
 # dbt_twilio_source v0.3.0
 

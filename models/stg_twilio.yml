@@ -317,31 +317,6 @@ models:
           How long, in seconds, messages sent from the Service are valid. Can be an integer from 1 to 14,400.
 
 
-  - name: stg_twilio__outgoing_caller_id
-    description: A table with information on each single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.
-    columns:
-      - name: _fivetran_synced
-        description: timestamp of when fivetran synced a record.
-
-      - name: outgoing_caller_id
-        description: The unique string that identifies this resource.
-        tests:
-          - unique
-          - not_null
-        
-      - name: created_at
-        description: The date that this resource was created, given in RFC 2822 format.
-
-      - name: friendly_name
-        description: A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
-
-      - name: phone_number
-        description: The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
-
-      - name: updated_at
-        description: The date that this resource was last updated, given in RFC 2822 format.
-
-
   - name: stg_twilio__usage_record
     description: A table with information about resource consumption in Twilio.
     tests:
