@@ -1,3 +1,5 @@
+{{ config(enabled=var('using_twilio_usage_record', True)) }}
+
 with base as (
 
     select * 
