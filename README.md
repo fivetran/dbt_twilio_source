@@ -44,7 +44,7 @@ Include the following Twilio package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/twilio_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 ```
 
 ### Step 3: Define database and schema variables
@@ -66,6 +66,7 @@ By default, all variables are assumed to be `true`.
 vars:
   using_twilio_call: False # Disable this if not using call
   using_twilio_messaging_service: False # Disable this if not using messaging_service
+  using_twilio_usage_record: False # Disable this if not using call
 ```
 
 ### (Optional) Step 5: Additional configurations
