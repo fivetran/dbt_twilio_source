@@ -1,4 +1,6 @@
-<p align="center">
+# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_twilio_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/))
 ## What does this dbt package do?
 
 - Materializes [Twilio staging tables](https://fivetran.github.io/dbt_twilio_source/#!/overview/twilio_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/twilio#schemainformation). These staging tables clean, test, and prepare your Twilio data from [Fivetran's connector](https://fivetran.com/docs/applications/twilio) for analysis by doing the following:
