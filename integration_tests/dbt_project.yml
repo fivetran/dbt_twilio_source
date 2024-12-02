@@ -1,11 +1,11 @@
 config-version: 2
 name: 'twilio_source_integration_tests'
-version: '0.3.0'
+version: '0.4.0'
 profile: 'integration_tests'
 
 vars:
   twilio_source:
-    twilio_schema: twilio_source_integration_tests_5
+    twilio_schema: twilio_source_integration_tests_6
     twilio_account_history_identifier:  "twilio_account_history_data"
     twilio_address_identifier:  "twilio_address_data"
     twilio_incoming_phone_number_identifier:  "twilio_incoming_phone_number_data"

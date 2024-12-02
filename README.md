@@ -1,4 +1,6 @@
-<p align="center">
+# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_twilio_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Twilio Source dbt Package ([docs](https://fivetran.github.io/dbt_twilio_source/))
 ## What does this dbt package do?
 
 - Materializes [Twilio staging tables](https://fivetran.github.io/dbt_twilio_source/#!/overview/twilio_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/twilio#schemainformation). These staging tables clean, test, and prepare your Twilio data from [Fivetran's connector](https://fivetran.com/docs/applications/twilio) for analysis by doing the following:
@@ -44,7 +45,7 @@ Include the following Twilio package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/twilio_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 ```
 
 ### Step 3: Define database and schema variables
@@ -66,6 +67,7 @@ By default, all variables are assumed to be `true`.
 vars:
   using_twilio_call: False # Disable this if not using call
   using_twilio_messaging_service: False # Disable this if not using messaging_service
+  using_twilio_usage_record: False # Disable this if not using usage_record
 ```
 
 ### (Optional) Step 5: Additional configurations
