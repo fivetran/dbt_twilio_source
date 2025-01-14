@@ -1,3 +1,8 @@
+# dbt_twilio_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#14](https://github.com/fivetran/dbt_twilio_source/pull/14))
+
 # dbt_twilio_source v0.4.0
 
 [PR #13](https://github.com/fivetran/dbt_twilio_source/pull/13) includes the following updates:
