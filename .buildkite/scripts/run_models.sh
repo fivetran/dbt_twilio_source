@@ -17,6 +17,7 @@ echo `pwd`
 cd integration_tests
 dbt deps
 dbt seed --target "$db" --full-refresh
+dbt source freshness --target "$db" || echo "...Only verifying freshness runs…"
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
 dbt run --vars '{using_twilio_call: false, using_twilio_messaging_service: false, using_twilio_usage_record: false}' --target "$db" --full-refresh
