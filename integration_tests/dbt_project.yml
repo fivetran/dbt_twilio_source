@@ -20,6 +20,8 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
+  +docs:
+    show: False
   twilio_source_integration_tests:
     +column_types:
       to: "{{ 'string' if target.type in ['bigquery', 'spark', 'databricks'] else 'varchar' }}"
@@ -39,3 +41,5 @@ seeds:
       +alias: twilio_call_data
 flags:
   send_anonymous_usage_stats: False
+
+  use_colors: True
